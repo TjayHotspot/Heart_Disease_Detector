@@ -7,4 +7,6 @@ module org.example.heart_disease_detector {
 
     opens org.example.heart_disease_detector to javafx.fxml;
     exports org.example.heart_disease_detector;
+    exports org.example.heart_disease_detector.Controllers;
+    opens org.example.heart_disease_detector.Controllers to javafx.fxml;
 }
