@@ -7,9 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #ECF4FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.heart_disease_detector.Controllers.mainController" stylesheets="./css/style_sheet.css">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #ECF4FF;" stylesheets="css/style_sheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.heart_disease_detector.Controllers.mainController">
    <children>
       <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#edf5fc" height="88.0" layoutX="88.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="1024.0" />
       <Text layoutX="316.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heart Disease Detector" textAlignment="CENTER" wrappingWidth="568.36279296875">
@@ -18,14 +16,12 @@
          </font>
       </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SKYBLUE" height="551.0" layoutX="178.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="845.0" />
-      <Button id="Single_Patient_btn" layoutX="477.0" layoutY="312.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="244.0" styleClass="menu_buttons" text="Single Patient"
-               onAction="#singlePatient">
+      <Button id="Single_Patient_btn" layoutX="477.0" layoutY="312.0" mnemonicParsing="false" onAction="#singlePatient" prefHeight="88.0" prefWidth="244.0" styleClass="menu_buttons" stylesheets="@css/style_sheet.css" text="Single Patient">
          <font>
             <Font size="28.0" />
          </font>
       </Button>
-      <Button id="Multiple_Patients_btn" layoutX="477.0" layoutY="455.0" mnemonicParsing="false" prefHeight="88.0" prefWidth="244.0" styleClass="menu_buttons" text="Multiple Patients"
-               onAction="#multiplePatients">
+      <Button id="Multiple_Patients_btn" layoutX="477.0" layoutY="455.0" mnemonicParsing="false" onAction="#multiplePatients" prefHeight="88.0" prefWidth="244.0" styleClass="menu_buttons" stylesheets="@css/style_sheet.css" text="Multiple Patients">
          <font>
             <Font size="28.0" />
          </font>
@@ -40,8 +36,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <Button id="Check_Updates_btn" layoutX="534.0" layoutY="762.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="Check For Updates" textAlignment="CENTER" underline="true"
-               onAction="#checkForUpdates">
+      <Button id="Check_Updates_btn" layoutX="534.0" layoutY="762.0" mnemonicParsing="false" onAction="#checkForUpdates" prefHeight="25.0" prefWidth="131.0" style="-fx-background-color: transparent;" text="Check For Updates" textAlignment="CENTER" underline="true">
          <font>
             <Font size="12.0" />
          </font>

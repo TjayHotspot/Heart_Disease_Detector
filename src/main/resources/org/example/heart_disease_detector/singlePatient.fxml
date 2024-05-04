@@ -1,14 +1,283 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.heart_disease_detector.Controllers.singlePatientController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #ECF4FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.heart_disease_detector.Controllers.singlePatientController">
+    <children>
+        <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#edf5fc" height="88.0" layoutX="88.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="1024.0" />
+        <Text layoutX="316.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heart Disease Detector" textAlignment="CENTER" wrappingWidth="568.36279296875">
+            <font>
+                <Font size="57.0" />
+            </font>
+        </Text>
+      <Text layoutX="476.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Single Patient Evaluation" textAlignment="CENTER" underline="true" wrappingWidth="248.255859375">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <GridPane gridLinesVisible="true" layoutX="88.0" layoutY="142.0" prefHeight="584.0" prefWidth="568.0" style="-fx-background-color: white;">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="227.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="341.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patients First Name" wrappingWidth="165.6630859375">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Patients Last Name" wrappingWidth="168.21630859375" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Age" wrappingWidth="39.21630859375" GridPane.rowIndex="2">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sex" GridPane.rowIndex="3">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chest Pain" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Blood Preassure" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cholesteral" GridPane.rowIndex="6">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FBS Over 120" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="EKG Results" GridPane.rowIndex="8">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max Heart Rate" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Exercise angina" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ST Depression" GridPane.rowIndex="11">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Slope of ST" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Number of Vessels Fluro" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thallium" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField promptText="First Name" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField promptText="Age" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <ChoiceBox fx:id="sex_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Male" />
+                     <String fx:value="Female" />
+                  </FXCollections>
+               </items>
+            </ChoiceBox>
+            <TextField promptText="Resting Blood Preassure (mm Hg)" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField promptText="Serum Cholestoral (mg/dl)" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField promptText="Excercise ECG Results" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField promptText="Max Heart Rate Achieved" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField promptText="ST Depression " GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <ChoiceBox fx:id="chest_pain_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="FBS_over_120_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="Exercise_angina_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="ST_slope_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="Vessels_Fluro_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="Thallium_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+         </children>
+      </GridPane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SKYBLUE" height="584.0" layoutX="677.0" layoutY="142.0" stroke="BLACK" strokeType="INSIDE" width="436.0" />
+      <Text layoutX="830.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Option Menu" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Button id="home_btn" layoutX="815.0" layoutY="243.0" mnemonicParsing="false" onAction="#home_btn" prefHeight="45.0" prefWidth="161.0" text="Home">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="815.0" layoutY="412.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Help">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="815.0" layoutY="324.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Rubric">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="815.0" layoutY="599.0" mnemonicParsing="false" text="View Results">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+    </children>
 </AnchorPane>
