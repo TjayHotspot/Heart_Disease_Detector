@@ -3,10 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -31,7 +35,7 @@
                 <Font size="24.0" />
             </font>
         </Button>
-        <Button layoutX="815.0" layoutY="412.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Help">
+        <Button layoutX="815.0" layoutY="412.0" mnemonicParsing="false" onAction="#help_btn" prefHeight="45.0" prefWidth="161.0" text="Help">
             <font>
                 <Font size="24.0" />
             </font>
@@ -103,5 +107,69 @@
             </TextField>
          </children>
       </GridPane>
+      <Pane id="overlay_pane" fx:id="overlay_pane" layoutX="7.0" prefHeight="800.0" prefWidth="1200.0" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="98.0" fitWidth="71.0" layoutX="480.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
+                    <image>
+                        <Image url="@Images/New_red_arrow.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="98.0" fitWidth="71.0" layoutX="740.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/New_red_arrow.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="98.0" fitWidth="71.0" layoutX="740.0" layoutY="331.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/New_red_arrow.png" />
+                    </image>
+                </ImageView>
+                <ImageView fitHeight="98.0" fitWidth="71.0" layoutX="740.0" layoutY="610.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@Images/New_red_arrow.png" />
+                    </image>
+                </ImageView>
+                <Circle fill="#deefff" layoutX="434.0" layoutY="236.0" radius="44.0" scaleX="2.0" stroke="BLACK" strokeType="INSIDE" />
+                <Text layoutX="354.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Results Column" textAlignment="CENTER" wrappingWidth="160.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Circle fill="#deefff" layoutX="663.0" layoutY="268.0" radius="44.0" scaleX="2.0" stroke="BLACK" strokeType="INSIDE" />
+                <Text layoutX="623.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Go Home">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Circle fill="#deefff" layoutX="663.0" layoutY="352.0" radius="44.0" scaleX="2.0" stroke="BLACK" strokeType="INSIDE" />
+                <Text layoutX="584.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient Information">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Circle fill="#deefff" layoutX="663.0" layoutY="631.0" radius="44.0" scaleX="2.0" stroke="BLACK" strokeType="INSIDE" />
+                <Text layoutX="583.0" layoutY="625.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Analyze Patient Information" textAlignment="CENTER" wrappingWidth="160.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+                <Button layoutX="816.0" layoutY="413.0" mnemonicParsing="false" onAction="#help_btn" prefHeight="45.0" prefWidth="161.0" text="ESC">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Button>
+                <ImageView fitHeight="98.0" fitWidth="71.0" layoutX="232.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true" rotate="37.9">
+                    <image>
+                        <Image url="@Images/New_red_arrow.png" />
+                    </image>
+                </ImageView>
+                <Circle fill="#deefff" layoutX="187.0" layoutY="240.0" radius="44.0" scaleX="2.0" stroke="BLACK" strokeType="INSIDE" />
+                <Text layoutX="107.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Results Labels" textAlignment="CENTER" wrappingWidth="160.0">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Text>
+            </children>
+      </Pane>
     </children>
 </AnchorPane>

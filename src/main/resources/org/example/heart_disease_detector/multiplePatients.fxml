@@ -224,7 +224,7 @@
                 <Font size="20.0" />
             </font>
         </Label>
-        <Pane id="overlay_pane" fx:id="overlay_pane" layoutX="7.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Pane id="overlay_pane" fx:id="overlay_pane" visible="false" layoutX="7.0" prefHeight="800.0" prefWidth="1200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
                 <ImageView fitHeight="98.0" fitWidth="71.0" layoutX="384.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" rotate="45.0">
                     <image>
