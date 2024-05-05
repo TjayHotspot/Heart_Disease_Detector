@@ -229,31 +229,73 @@
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Typical angina" />
+                     <String fx:value="Atypical angina" />
+                     <String fx:value="Non-anginal pain" />
+                     <String fx:value="Asymptomatic" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
             <ChoiceBox fx:id="FBS_over_120_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Yes" />
+                     <String fx:value="No" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
             <ChoiceBox fx:id="Exercise_angina_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Yes" />
+                     <String fx:value="No" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
             <ChoiceBox fx:id="ST_slope_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Upsloping" />
+                     <String fx:value="Flat" />
+                     <String fx:value="Downsloping" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
             <ChoiceBox fx:id="Vessels_Fluro_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="0" />
+                     <String fx:value="1" />
+                     <String fx:value="2" />
+                     <String fx:value="3" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
             <ChoiceBox fx:id="Thallium_dropdown" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="14">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="Normal" />
+                     <String fx:value="Fixed Defect" />
+                     <String fx:value="Reversible Defect" />
+                  </FXCollections>
+               </items>
             </ChoiceBox>
          </children>
       </GridPane>
