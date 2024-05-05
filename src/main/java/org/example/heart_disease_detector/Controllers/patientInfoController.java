@@ -12,6 +12,10 @@ import org.example.heart_disease_detector.HeartDiseaseApplication;
 import java.io.IOException;
 
 public class patientInfoController {
+    public static String patientInfoBackParent;
+    // patientResults
+    // patientList
+
     @FXML
     Pane overlay_pane;
     @FXML
@@ -47,16 +51,32 @@ public class patientInfoController {
 
     @FXML
     protected void back_btn(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+        // patientResults
+        // patientList
+        if(patientInfoBackParent.equals("patientResults")) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
 
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else if(patientInfoBackParent.equals("patientList")) {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientList.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

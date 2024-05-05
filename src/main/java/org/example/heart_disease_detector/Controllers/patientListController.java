@@ -36,6 +36,7 @@ public class patientListController {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientInfo.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            patientInfoController.patientInfoBackParent = "patientList";
             stage.setScene(scene);
             stage.show();
 
