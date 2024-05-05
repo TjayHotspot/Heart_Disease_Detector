@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Pagination?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Text?>
 <?import javafx.scene.text.Font?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="org.example.heart_disease_detector.Controllers.patientListController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #ECF4FF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.heart_disease_detector.Controllers.patientListController">
     <children>
         <Rectangle arcHeight="10.0" arcWidth="5.0" fill="#edf5fc" height="88.0" layoutX="88.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="1024.0" />
         <Text layoutX="316.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Heart Disease Detector" textAlignment="CENTER" wrappingWidth="568.36279296875">
@@ -20,5 +20,262 @@
                 <Font size="57.0" />
             </font>
         </Text>
+      <Pagination layoutX="89.0" layoutY="203.0" pageCount="2" prefHeight="567.0" prefWidth="568.0" />
+        <GridPane gridLinesVisible="true" layoutX="88.0" layoutY="202.0" prefHeight="524.0" prefWidth="568.0" style="-fx-background-color: lightgray;">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="299.0" minWidth="10.0" prefWidth="284.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="284.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </TextField>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="10">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="11">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.columnIndex="1" GridPane.rowIndex="12">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="8">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="9">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="10">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="11">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            <ToggleButton disable="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="344.0" style="-fx-background-color: transparent;" GridPane.rowIndex="12">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </ToggleButton>
+            </children>
+        </GridPane>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SKYBLUE" height="584.0" layoutX="677.0" layoutY="142.0" stroke="BLACK" strokeType="INSIDE" width="436.0" />
+        <Text layoutX="830.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Option Menu" underline="true">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Button id="home_btn" layoutX="815.0" layoutY="243.0" mnemonicParsing="false" onAction="#home_btn" prefHeight="45.0" prefWidth="161.0" text="Home">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Button layoutX="815.0" layoutY="412.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Help">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Button id="patient_data_btn" layoutX="815.0" layoutY="324.0" mnemonicParsing="false" onAction="#patient_data_btn" prefHeight="45.0" prefWidth="161.0" text="Patient Data">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+        <Text layoutX="543.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Patient List" underline="true">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Text>
+        <Button id="patient_results_btn" layoutX="815.0" layoutY="595.0" mnemonicParsing="false" onAction="#patient_results_btn" prefHeight="74.0" prefWidth="161.0" text="Patient Results" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Button>
+      <Text layoutX="88.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select A Patient" underline="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField layoutX="440.0" layoutY="159.0" promptText="Search" />
+      <Button layoutX="600.0" layoutY="159.0" mnemonicParsing="false" text="OK" />
     </children>
 </AnchorPane>

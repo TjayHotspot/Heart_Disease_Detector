@@ -40,8 +40,18 @@ public class mainController {
     }
 
     @FXML
-    protected void multiplePatients() {
-        System.out.println("multiple patients was pressed");
+    protected void multiplePatients(ActionEvent event) throws IOException {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("multiplePatients.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

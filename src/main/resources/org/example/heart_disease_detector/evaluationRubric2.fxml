@@ -98,6 +98,6 @@
             </font>
         </Button>
         <Text layoutX="88.0" layoutY="739.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Page 2 of 2" />
-        <Button fx:id="page1_btn" layoutX="288.0" layoutY="722.0" mnemonicParsing="false" text="Page 1" />
+        <Button fx:id="page1_btn" layoutX="288.0" layoutY="722.0" mnemonicParsing="false" onAction="#page_1_btn" text="Page 1" />
     </children>
 </AnchorPane>
