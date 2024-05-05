@@ -35,6 +35,7 @@ public class singlePatientController {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("evaluationRubric.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            evaluationRubricController.backParent = "singlePatient";
             stage.setScene(scene);
             stage.show();
 
@@ -51,6 +52,7 @@ public class singlePatientController {
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
+            evaluationRubricController.backParent = "singlePatient";
             stage.show();
 
         }

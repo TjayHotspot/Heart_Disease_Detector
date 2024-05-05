@@ -35,6 +35,7 @@ public class patientInfoController {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("evaluationRubric.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            evaluationRubricController.backParent = "patientInfo";
             stage.setScene(scene);
             stage.show();
 
