@@ -59,6 +59,8 @@ public class singlePatientController {
     @FXML
     private Text prompt_empty;
 
+    public static String defaultCSV = "src/main/resources/org/example/heart_disease_detector/patientData.csv";
+
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -93,13 +95,17 @@ public class singlePatientController {
     @FXML
     protected void view_results_btn(ActionEvent event) throws IOException {
         if(forum_incomplete()){
-
+            return;
         }
         else {
+            patientResultsController.parent_caller = "singlePatient";
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                // Read CSV file add name
+                // Predict patient has heart disease
+                // Write Probability
                 stage.setScene(scene);
                 evaluationRubricController.backParent = "singlePatient";
                 stage.show();
@@ -218,39 +224,39 @@ public class singlePatientController {
     @FXML
     protected void data_to_csv(List<String> stringDataList, List<Integer> integerDataList) throws IOException {
         // Path to CSV file
-        String csvFilePath = "src/main/resources/org/example/heart_disease_detector/patientData.csv";
+        String csvFilePath = defaultCSV;
         // Clear the CSV file by truncating it
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, false))) {
             // Truncate the file by opening it in write mode (false) and not appending data
             writer.write(""); // Write an empty string to clear the file
             writer.write(stringDataList.get(0));    //Field 1 (String)[0]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(1));    //Field 2 (String)[1]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(integerDataList.get(0));   //Field 3 (Int)   [0]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(2));    //Field 4 (String)[2]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(3));    //Field 5 (String)[3]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(integerDataList.get(1));   //Field 6 (Int)   [1]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(integerDataList.get(2));   //Field 7 (Int)   [2]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(4));    //Field 8 (String)[4]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(integerDataList.get(3));   //Field 9 (Int)   [3]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(integerDataList.get(4));   //Field 10 (Int)  [4]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(5));   //Field 11 (String)[5]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(6));   //Field 12 (String)[6]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(7));    //Field 13 (String)[7]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(8));    //Field 14 (String)[8]
-            writer.newLine(); // Move to the next line
+            writer.write(","); // Create Comma separate
             writer.write(stringDataList.get(9));   //Field 15 (String)[9]
 
         } catch (IOException e) {

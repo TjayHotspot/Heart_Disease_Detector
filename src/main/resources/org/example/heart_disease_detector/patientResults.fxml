@@ -90,17 +90,17 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Text>
-            <TextField alignment="CENTER" editable="false" style="-fx-background-color: #E0DCC8;" GridPane.columnIndex="1">
+            <TextField fx:id="patient_results_name" alignment="CENTER" editable="false" style="-fx-background-color: #E0DCC8;" GridPane.columnIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" editable="false" style="-fx-background-color: #E0DCC8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="patient_results_HD" alignment="CENTER" editable="false" style="-fx-background-color: #E0DCC8;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="20.0" />
                </font>
             </TextField>
-            <TextField alignment="CENTER" editable="false" style="-fx-background-color: #E0DCC8;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="patient_results_probability" alignment="CENTER" editable="false" style="-fx-background-color: #E0DCC8;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="20.0" />
                </font>
