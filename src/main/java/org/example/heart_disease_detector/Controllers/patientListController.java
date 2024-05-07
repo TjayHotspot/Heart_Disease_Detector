@@ -15,9 +15,7 @@ import javafx.stage.Stage;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 import org.example.heart_disease_detector.Patient;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 
@@ -30,6 +28,8 @@ public class patientListController implements Initializable {
     TextField search_field;
     @FXML
     Text patient_not_found;
+    @FXML
+    Text patient_prompt_text;
 
     @FXML ToggleButton box1;
     @FXML ToggleButton box2;
@@ -58,13 +58,19 @@ public class patientListController implements Initializable {
     @FXML ToggleButton box25;
     @FXML ToggleButton box26;
 
+    // global data set by calling classes
     public static String file_location;
     public static int record_count;
 
-
+    // Keep track of pages
     private int page_tracker = 1;
     private int box_tracker = 0;
     private int pageCount = 1;
+
+    private ToggleButton  currently_selected;
+
+
+
 
     // HashMap to store patient information
     private HashMap<String, Patient> patientMap = new HashMap<>();
@@ -87,32 +93,44 @@ public class patientListController implements Initializable {
 
     @FXML
     protected void patient_data_btn(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientInfo.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            patientInfoController.patientInfoBackParent = "patientList";
-            stage.setScene(scene);
-            stage.show();
+        if(currently_selected != null) {
+            setCurrentPatient();
+            patient_prompt_text.setVisible(false);
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientInfo.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                patientInfoController.patientInfoBackParent = "patientList";
+                stage.setScene(scene);
+                stage.show();
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        else{
+            patient_prompt_text.setVisible(true);
         }
     }
 
     @FXML
     protected void patient_results_btn(ActionEvent event) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+        if(currently_selected != null) {
+            setCurrentPatient();
+            patient_prompt_text.setVisible(false);
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
 
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        else{
+            patient_prompt_text.setVisible(true);
         }
     }
 
@@ -131,6 +149,31 @@ public class patientListController implements Initializable {
     protected void displayNames(){
         String line = "";
         String csvDelimiter = ",";
+        int currentLine = 0;
+        load_patients();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file_location))) {
+            while ((line = br.readLine()) != null && box_tracker < 26) {
+                if(currentLine < page_tracker * 26 && currentLine >= ((page_tracker - 1)  * 26) ) {
+                    // Split the line by the delimiter
+                    String[] data = line.split(csvDelimiter);
+                    String name = (data[0] + " " + data[1]);
+                    addName(name);
+                }
+                // Process each column of the CSV data
+                System.out.println(); // Move to the next line
+                currentLine++;
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    protected void load_patients(){
+        String line = "";
+        String csvDelimiter = ",";
 
         // Calculate Page Count
         pageCount = record_count / 26;
@@ -139,19 +182,18 @@ public class patientListController implements Initializable {
         }
         // Set Page Count
         page_count.setText("Page " + page_tracker + " of " + pageCount);
-
-
         try (BufferedReader br = new BufferedReader(new FileReader(file_location))) {
-            while ((line = br.readLine()) != null && box_tracker < 26) {
+            while ((line = br.readLine()) != null) {
                 // Split the line by the delimiter
                 String[] data = line.split(csvDelimiter);
                 String name = (data[0] + " " + data[1]);
-                addName(name);
                 Patient patient = new Patient(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8],
                         data[9], data[10], data[11], data[12], data[13], data[14]);
                 patientMap.put(name, patient);
+
                 // Process each column of the CSV data
                 System.out.println(); // Move to the next line
+
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -193,6 +235,7 @@ public class patientListController implements Initializable {
             if (box == button) {
                 box.setSelected(true);
                 box.setStyle("-fx-border-color: blue");
+                currently_selected = box;
             } else {
                 // Otherwise, deselect it and reset its style
                 box.setSelected(false);
@@ -208,6 +251,11 @@ public class patientListController implements Initializable {
             page_tracker++;
             // Set Page Count
             page_count.setText("Page " + page_tracker + " of " + pageCount);
+            clearTable();
+            displayNames();
+
+            // Deselect all toggle buttons
+            deselectToggleButtons();
         }
     }
 
@@ -217,7 +265,25 @@ public class patientListController implements Initializable {
             page_tracker--;
             // Set Page Count
             page_count.setText("Page " + page_tracker + " of " + pageCount);
+            clearTable();
+            displayNames();
+
+            // Deselect all toggle buttons
+            deselectToggleButtons();
         }
+    }
+
+    // Method to deselect all toggle buttons
+    private void deselectToggleButtons() {
+        List<ToggleButton> boxes = Arrays.asList(box1, box2, box3, box4, box5, box6, box7, box8, box9, box10
+                , box11, box12, box13, box14, box15, box16, box17, box18, box19, box20, box21, box22, box23, box24, box25, box26);
+
+        for (ToggleButton box : boxes) {
+            box.setSelected(false);
+            box.setStyle("-fx-border-color: transparent");
+            box.setStyle("-fx-background-color: transparent");
+        }
+        currently_selected = null;
     }
 
     @FXML
@@ -225,8 +291,10 @@ public class patientListController implements Initializable {
         if (patientMap.containsKey(search_field.getText())){
             clearTable();
             addName(search_field.getText());
+            deselectToggleButtons();
         }
         else{
+            deselectToggleButtons();
             patient_not_found.setVisible(true);
         }
 
@@ -239,9 +307,25 @@ public class patientListController implements Initializable {
         displayNames();
     }
 
+    @FXML
+    public void setCurrentPatient(){
+        if(currently_selected != null){
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/org/example/heart_disease_detector/currentPatient.csv"))) {
+                // Append data to the CSV file
+                writer.write("");
+                Patient patient = patientMap.get(currently_selected.getText());
+                writer.write(patient.getAllPatientData());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayNames();
     }
+
 }
