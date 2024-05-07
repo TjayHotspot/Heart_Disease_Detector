@@ -31,6 +31,7 @@ public class multiplePatientsController {
     Text prompt_upload;
 
     boolean fileUploaded = false;
+    int recordCount = 0;
 
     private String defaultCSV = "src/main/resources/org/example/heart_disease_detector/patientData.csv";
 
@@ -40,6 +41,9 @@ public class multiplePatientsController {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("main.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            fileUploaded = false;
+            recordCount = 0;
+            file_status.setText("No File Added");
             stage.setScene(scene);
             stage.show();
 
@@ -69,6 +73,8 @@ public class multiplePatientsController {
     protected void patientList_btn(ActionEvent event) throws IOException {
         if (fileUploaded) {
             try {
+                patientListController.file_location = defaultCSV;
+                patientListController.record_count = recordCount;
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientList.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -119,15 +125,13 @@ public class multiplePatientsController {
         boolean success = false;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            int count = 0;
             try(BufferedWriter writer = new BufferedWriter(new FileWriter(defaultCSV));) {
                 writer.write("");
                 while ((line = br.readLine()) != null) {
                     // Process each line of the CSV file
                     writer.write(line);
                     writer.newLine();
-                    count++;
-                    System.out.println(line);
+                    recordCount++;
                 }
             }
             catch (IOException e) {
