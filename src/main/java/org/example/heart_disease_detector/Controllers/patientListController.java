@@ -20,6 +20,7 @@ import java.net.URL;
 import java.util.*;
 
 public class patientListController implements Initializable {
+    // Scene Variables
     @FXML
     Pane overlay_pane;
     @FXML
@@ -31,6 +32,7 @@ public class patientListController implements Initializable {
     @FXML
     Text patient_prompt_text;
 
+    // Text Boxes
     @FXML ToggleButton box1;
     @FXML ToggleButton box2;
     @FXML ToggleButton box3;

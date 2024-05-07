@@ -85,6 +85,6 @@ public class Patient {
     }
     public String getAllPatientData(){
         return firstName + "," + lastName + "," + age + "," + sex + "," + chestPain + "," + BP + "," + Chol + "," + FBS_over_120 + "," + EKG + "," + max_HR + "," + excercise_angina
-                + ST_depression + "," + slopST + "," + fluro + "," + thallium;
+                + "," + ST_depression + "," + slopST + "," + fluro + "," + thallium;
     }
 }
