@@ -26,8 +26,8 @@
         <GridPane gridLinesVisible="true" layoutX="88.0" layoutY="142.0" prefHeight="584.0" prefWidth="568.0" style="-fx-background-color: lightgray;">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="285.0" minWidth="10.0" prefWidth="225.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="248.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="97.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="201.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="344.0" minWidth="10.0" prefWidth="143.0" />
             </columnConstraints>
             <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -167,81 +167,136 @@
                         <Font size="20.0" />
                     </font>
                 </Text>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1">
+                <TextField fx:id="first_name_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <TextField fx:id="last_name_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <TextField fx:id="age_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                <TextField fx:id="BP_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="5">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                <TextField fx:id="Chol_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="6">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                <TextField fx:id="EKG_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="8">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                <TextField fx:id="max_HR_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="9">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                <TextField fx:id="ST_depression_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="11">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <TextField fx:id="sex_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <TextField fx:id="chest_pain_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="4">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                <TextField fx:id="FBS_over_120_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="7">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                <TextField fx:id="exercise_angina_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="10">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                <TextField fx:id="ST_slope_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="12">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                <TextField fx:id="Fluro_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="13">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="14">
+                <TextField fx:id="thallium_text" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="1" GridPane.rowIndex="14">
                     <font>
                         <Font size="16.0" />
                     </font>
                 </TextField>
+            <TextField fx:id="BP_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="chest_pain_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="Chol_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="EKG_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="8">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="FBS_over_120_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="7">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="max_HR_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="9">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="exercise_angina_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="10">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="ST_depression_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="11">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="ST_slope_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="Fluro_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="13">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="thallium_A" editable="false" style="-fx-background-color: lightgray;" GridPane.columnIndex="2" GridPane.rowIndex="14">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
             </children>
         </GridPane>
         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SKYBLUE" height="584.0" layoutX="677.0" layoutY="142.0" stroke="BLACK" strokeType="INSIDE" width="436.0" />
