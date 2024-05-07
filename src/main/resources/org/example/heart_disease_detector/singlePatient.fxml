@@ -174,17 +174,17 @@
                   <Font size="20.0" />
                </font>
             </Text>
-            <TextField promptText="First Name" GridPane.columnIndex="1">
+            <TextField id="first_name_box" fx:id="first_name_box" promptText="First Name" GridPane.columnIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <TextField fx:id="last_name_box" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="Age" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <TextField fx:id="age_box" promptText="Age" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="16.0" />
                </font>
@@ -200,27 +200,27 @@
                   </FXCollections>
                </items>
             </ChoiceBox>
-            <TextField promptText="Resting Blood Preassure (mm Hg)" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextField fx:id="BP_box" promptText="Resting Blood Preassure (mm Hg)" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="Serum Cholestoral (mg/dl)" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <TextField fx:id="Chol_box" promptText="Serum Cholestoral (mg/dl)" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="Excercise ECG Results" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <TextField fx:id="EKG_box" promptText="Excercise ECG Results" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="Max Heart Rate Achieved" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <TextField fx:id="max_HR_box" promptText="Max Heart Rate Achieved" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <font>
                   <Font size="16.0" />
                </font>
             </TextField>
-            <TextField promptText="ST Depression " GridPane.columnIndex="1" GridPane.rowIndex="11">
+            <TextField fx:id="ST_Depression_box" promptText="ST Depression " GridPane.columnIndex="1" GridPane.rowIndex="11">
                <font>
                   <Font size="16.0" />
                </font>
@@ -389,5 +389,15 @@
             </Button>
          </children>
       </Pane>
+      <Text fx:id="prompt_empty" fill="RED" layoutX="807.0" layoutY="667.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fill In Empty Fields" underline="true" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="prompt_numerical" fill="#ff8400" layoutX="774.0" layoutY="696.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Field Must Be Numerical" underline="true" visible="false">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
