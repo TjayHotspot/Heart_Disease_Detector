@@ -294,6 +294,11 @@
             <Font size="24.0" />
          </font>
       </Text>
+      <Text fx:id="csv_fail" fill="RED" layoutX="789.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Something went wrong. Please make sure csv file is fomatted correctly. (Refer to rubric for help)" textAlignment="CENTER" visible="false" wrappingWidth="220.0">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
     </children>
 
 </AnchorPane>

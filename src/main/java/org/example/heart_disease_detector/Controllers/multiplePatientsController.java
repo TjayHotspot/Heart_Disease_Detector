@@ -29,6 +29,7 @@ public class multiplePatientsController {
     Rectangle prompt_upload_box;
     @FXML
     Text prompt_upload;
+    @FXML Text csv_fail;
 
     boolean fileUploaded = false;
     int recordCount = 0;
@@ -84,6 +85,7 @@ public class multiplePatientsController {
             }
             catch (IOException e) {
                 e.printStackTrace();
+                csv_fail.setVisible(true);
             }
         }
         else{
@@ -105,6 +107,7 @@ public class multiplePatientsController {
 
     // Method to handle the file upload action
     public void uploadFile_btn() {
+        csv_fail.setVisible(false);
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open CSV File");
         fileChooser.getExtensionFilters().addAll(
