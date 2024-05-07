@@ -130,7 +130,6 @@ public class singlePatientController {
         List<TextField> textFieldList = Arrays.asList(first_name_box, last_name_box, age_box, BP_box, Chol_box, EKG_box, max_HR_box, ST_Depression_box);
         List<String> textStringsList = new ArrayList<>();
         List<Integer> integersList = new ArrayList<>();
-        Double ST_depression = 0.0;
         // Iterate Through all textFields
         for (TextField textField : textFieldList) {
             // Check For Empty TextFields
@@ -152,7 +151,8 @@ public class singlePatientController {
                     }
                 } else if (textField == ST_Depression_box) {
                     try {
-                        ST_depression = Double.parseDouble(textField.getText());
+                        Double.parseDouble(textField.getText());
+                        textStringsList.add(textField.getText());
                         textField.setStyle("-fx-border-color: default;");
 
                     } catch (NumberFormatException e) {
@@ -204,23 +204,59 @@ public class singlePatientController {
         if(any_non_numbers){
             prompt_numerical.setVisible(true);
         }
-        data_to_csv(textStringsList, integersList, ST_depression);
+        if(!is_incomplete){
+            try{
+                data_to_csv(textStringsList, integersList);
+            }
+            catch(IOException e){
+                e.printStackTrace();
+            }
+        }
         return is_incomplete;
     }
 
     @FXML
-    protected void data_to_csv(List<String> stringDataList, List<Integer> integerDataList, Double stDepression) throws IOException {
-        // Path to your CSV file
+    protected void data_to_csv(List<String> stringDataList, List<Integer> integerDataList) throws IOException {
+        // Path to CSV file
         String csvFilePath = "src/main/resources/org/example/heart_disease_detector/patientData.csv";
-
         // Clear the CSV file by truncating it
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, false))) {
             // Truncate the file by opening it in write mode (false) and not appending data
             writer.write(""); // Write an empty string to clear the file
+            writer.write(stringDataList.get(0));    //Field 1 (String)[0]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(1));    //Field 2 (String)[1]
+            writer.newLine(); // Move to the next line
+            writer.write(integerDataList.get(0));   //Field 3 (Int)   [0]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(2));    //Field 4 (String)[2]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(3));    //Field 5 (String)[3]
+            writer.newLine(); // Move to the next line
+            writer.write(integerDataList.get(1));   //Field 6 (Int)   [1]
+            writer.newLine(); // Move to the next line
+            writer.write(integerDataList.get(2));   //Field 7 (Int)   [2]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(4));    //Field 8 (String)[4]
+            writer.newLine(); // Move to the next line
+            writer.write(integerDataList.get(3));   //Field 9 (Int)   [3]
+            writer.newLine(); // Move to the next line
+            writer.write(integerDataList.get(4));   //Field 10 (Int)  [4]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(5));   //Field 11 (String)[5]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(6));   //Field 12 (String)[6]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(7));    //Field 13 (String)[7]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(8));    //Field 14 (String)[8]
+            writer.newLine(); // Move to the next line
+            writer.write(stringDataList.get(9));   //Field 15 (String)[9]
+
         } catch (IOException e) {
+            System.err.println("Failed writing to csv file");
             e.printStackTrace();
         }
-
     }
 }
 
