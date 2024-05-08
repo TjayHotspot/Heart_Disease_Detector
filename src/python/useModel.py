@@ -29,9 +29,11 @@ from sklearn.linear_model import LogisticRegression
 # Thallium      (3 = normal; 6 = fixed defect; 7 = reversible defect)
 # target Presence or Absence
 
+# Get the directory of the current Python script
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Load the trained model from the .pkl file
-onnx_file_path = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/python/Heart_Disease_model.onnx"
+# Load the trained model from the .onnx file
+onnx_file_path = os.path.join(script_dir, "Heart_Disease_model.onnx")
 
 
 # Load the ONNX model
@@ -39,8 +41,9 @@ onnx_model_path = onnx_file_path  # Path to your ONNX model
 sess = rt.InferenceSession(onnx_model_path)
 
 
-csv_file_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/Shared_CSV/currentPatient.csv"
-csv_results_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/Shared_CSV/patientResults.csv"
+# Specify relative paths to the CSV files
+csv_file_location = os.path.join(script_dir, "..", "Shared_CSV", "currentPatient.csv")
+csv_results_location = os.path.join(script_dir, "..", "Shared_CSV", "patientResults.csv")
 
 
 # Get Project CSV

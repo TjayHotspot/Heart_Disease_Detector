@@ -123,7 +123,7 @@ public class patientResultsController implements Initializable {
         if(!scriptCalled) {
             try {
                 // Command to execute the Python script
-                String[] command = {"python", "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/python/useModel.py"};
+                String[] command = {"python", "src/python/useModel.py"};
 
                 // Create ProcessBuilder instance with the command
                 ProcessBuilder pb = new ProcessBuilder(command);
