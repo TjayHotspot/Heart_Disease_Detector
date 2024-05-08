@@ -13,6 +13,7 @@ import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -85,11 +86,12 @@ public class patientResultsController implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             // Command to execute the Python script
-            String[] command = {"python", "src/python/useModel.py"};
+            String[] command = {"python", "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/python/Heart_Disease_model.pkl"};
 
             // Create ProcessBuilder instance with the command
             ProcessBuilder pb = new ProcessBuilder(command);
@@ -97,12 +99,17 @@ public class patientResultsController implements Initializable {
             // Start the process
             Process process = pb.start();
 
+            // Read the error stream of the process
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            String errorLine;
+            while ((errorLine = errorReader.readLine()) != null) {
+                System.err.println("Error: " + errorLine);
+            }
 
 
             // Wait for the process to finish
             int exitCode = process.waitFor();
             System.out.println("Python script exited with code: " + exitCode);
-
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }

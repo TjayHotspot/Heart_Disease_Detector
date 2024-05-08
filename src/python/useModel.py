@@ -1,10 +1,11 @@
 import csv
-
 import joblib
 import os
 import numpy as np
 import pandas as pd
 import csv
+import onnxruntime as rt  # Import ONNX runtime
+from skl2onnx.common.data_types import FloatTensorType
 from sklearn.linear_model import LogisticRegression
 
 # Data Rubric:
@@ -30,15 +31,18 @@ from sklearn.linear_model import LogisticRegression
 
 
 # Load the trained model from the .pkl file
-model = joblib.load('Heart_Disease_model.pkl')
-print(os.getcwd())
-cwd = os.getcwd()
+onnx_file_path = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/python/Heart_Disease_model.onnx"
+
+
+# Load the ONNX model
+onnx_model_path = onnx_file_path  # Path to your ONNX model
+sess = rt.InferenceSession(onnx_model_path)
+
+
 csv_file_location = "../Shared_CSV/currentPatient.csv"
-
-
-
-# Create a new csv not patientData
 csv_results_location = "../Shared_CSV/patientResults.csv"
+
+
 # Get Project CSV
 df = pd.read_csv(csv_file_location, names=["FirstName", "LastName", "Age", "Sex", "Chest pain type", "BP", "Cholesterol", "FBS over 120", "EKG results", "Max HR", "Exercise angina",
                                            "ST depression", "Slope of ST", "Number of vessels fluro", "Thallium"])
@@ -88,20 +92,24 @@ fields.loc[fields["Thallium"] == "Reversible Defect", "Thallium"] = 7
 fields["Thallium"] = fields["Thallium"].astype(int)
 
 
-# Prediction
-prediction = model.predict(fields)
+X = fields.values.astype(np.float32)
 
-# Probability of prediction
-prob = model.predict_proba(fields)[0][prediction]
+# Run inference using the ONNX model
+predictions_proba = sess.run(None, {'float_input': X})
 
-#convert probability to percent
-probabilityFormatted = f"{prob[0]*100:.0f}"
+
+# Get Prediction
+predictions = predictions_proba[0][0]
+
+# Extract prediction probabilities
+probability = predictions_proba[1][0][predictions]
+
+
 
 # Combine name, results, and probability
-record = firstName[0],lastName[0],prediction[0],probabilityFormatted
+record = df.iloc[0]['FirstName'], df.iloc[0]['LastName'], predictions, f"{probability * 100:.0f}"
 
-
-## Write first name, last name, prediction, probability, to csv
+# Write first name, last name, prediction, probability, to csv
 with open(csv_results_location, mode='w', newline='') as file:
     writer = csv.writer(file)
     # Write the record to the CSV file
