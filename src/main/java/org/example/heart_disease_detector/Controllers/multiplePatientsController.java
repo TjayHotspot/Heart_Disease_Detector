@@ -86,6 +86,8 @@ public class multiplePatientsController {
             catch (IOException e) {
                 e.printStackTrace();
                 csv_fail.setVisible(true);
+                patientListController.record_count = 0;
+                recordCount = 0;
             }
         }
         else{
