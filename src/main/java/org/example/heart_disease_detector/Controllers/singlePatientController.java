@@ -59,7 +59,7 @@ public class singlePatientController {
     @FXML
     private Text prompt_empty;
 
-    public static String defaultCSV = "src/main/resources/org/example/heart_disease_detector/currentPatient.csv";
+    public static String defaultCSV = "src/main/CSV_Files/currentPatient.csv";
 
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {

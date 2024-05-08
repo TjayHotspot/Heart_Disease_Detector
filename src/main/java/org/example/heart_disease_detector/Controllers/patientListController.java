@@ -312,7 +312,7 @@ public class patientListController implements Initializable {
     @FXML
     public void setCurrentPatient(){
         if(currently_selected != null){
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/resources/org/example/heart_disease_detector/currentPatient.csv"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/main/CSV_Files/currentPatient.csv"))) {
                 // Append data to the CSV file
                 writer.write("");
                 Patient patient = patientMap.get(currently_selected.getText());

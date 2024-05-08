@@ -129,7 +129,7 @@ public class patientAnalysisController implements Initializable{
     protected void loadPatientInfo(){
         String line = "";
         String csvDelimiter = ",";
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/org/example/heart_disease_detector/currentPatient.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("src/main/CSV_Files/currentPatient.csv"))) {
             while ((line = br.readLine()) != null) {
                 // Split the line by the delimiter
                 String[] data = line.split(csvDelimiter);
