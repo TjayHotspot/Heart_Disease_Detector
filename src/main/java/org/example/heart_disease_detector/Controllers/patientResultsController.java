@@ -1,5 +1,6 @@
 package org.example.heart_disease_detector.Controllers;
 
+import javafx.fxml.Initializable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +11,13 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class patientResultsController {
+public class patientResultsController implements Initializable {
     @FXML
     Pane overlay_pane;
 
@@ -78,5 +83,28 @@ public class patientResultsController {
             overlay_pane.setVisible(true);
         }
 
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        try {
+            // Command to execute the Python script
+            String[] command = {"python", "src/python/useModel.py"};
+
+            // Create ProcessBuilder instance with the command
+            ProcessBuilder pb = new ProcessBuilder(command);
+
+            // Start the process
+            Process process = pb.start();
+
+
+
+            // Wait for the process to finish
+            int exitCode = process.waitFor();
+            System.out.println("Python script exited with code: " + exitCode);
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
