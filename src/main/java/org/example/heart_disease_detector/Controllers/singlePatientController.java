@@ -98,7 +98,6 @@ public class singlePatientController {
             return;
         }
         else {
-            patientResultsController.parent_caller = "singlePatient";
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
