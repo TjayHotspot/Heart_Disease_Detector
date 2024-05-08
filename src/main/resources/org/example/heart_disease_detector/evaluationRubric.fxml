@@ -180,7 +180,7 @@
                         <Font size="16.0" />
                     </font>
                 </TextField>
-                <TextField editable="false" style="-fx-background-color: lightgray;" text="Exercise induced angina (yes; No)" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                <TextField editable="false" style="-fx-background-color: lightgray;" text="Exercise induced angina (Yes; No)" GridPane.columnIndex="1" GridPane.rowIndex="10">
                     <font>
                         <Font size="16.0" />
                     </font>
@@ -190,7 +190,7 @@
                   <Font size="16.0" />
                </font>
             </TextArea>
-            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgray;" text="Resting blood pressure (in mm Hg on admission&#10;to the hospital) 11 htn" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgray;" text="Resting blood pressure (in mm Hg on admission&#10;to the hospital)" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="16.0" />
                </font>

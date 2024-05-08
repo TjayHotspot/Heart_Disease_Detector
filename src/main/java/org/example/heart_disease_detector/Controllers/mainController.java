@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
@@ -15,13 +16,8 @@ import java.io.IOException;
 
 public class mainController {
     @FXML
-    private Label welcomeText;
-    private Button singlePatient_btn;
-    private Button multiPatient_btn;
-    private Button checkForUpdate_btn;
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    Pane update_page;
+
 
 
     @FXML
@@ -56,7 +52,13 @@ public class mainController {
 
     @FXML
     protected void checkForUpdates() {
-        System.out.println("Check for updates was pressed");
+        update_page.setVisible(true);
     }
+
+    @FXML
+    protected void close_update() {
+        update_page.setVisible(false);
+    }
+
 
 }
