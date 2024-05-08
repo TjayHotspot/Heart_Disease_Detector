@@ -1,3 +1,5 @@
+import csv
+
 import joblib
 import os
 import numpy as np
@@ -30,7 +32,7 @@ from sklearn.linear_model import LogisticRegression
 model = joblib.load('Heart_Disease_model.pkl')
 
 csv_file_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/main/resources/org/example/heart_disease_detector/currentPatient.csv"
-
+csv_results_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/main/resources/org/example/heart_disease_detector/patientData.csv"
 # Get Project CSV
 df = pd.read_csv(csv_file_location, names=["FirstName", "LastName", "Age", "Sex", "Chest pain type", "BP", "Cholesterol", "FBS over 120", "EKG results", "Max HR", "Exercise angina",
                                            "ST depression", "Slope of ST", "Number of vessels fluro", "Thallium"])
@@ -82,8 +84,16 @@ fields.loc[fields["Thallium"] == "Reversible Defect", "Thallium"] = 7
 fields["Thallium"] = fields["Thallium"].astype(int)
 
 
-
+# Prediction
 prediction = model.predict(fields)
 
-print(prediction)
+# Probability
+prob = model.predict_proba(fields)
 
+probability = prob[0][prediction]
+
+#convert probability to percent
+
+print(prediction, " with ", probability)
+
+## Write first name, last name, prediction, probability, to csv
