@@ -4,6 +4,7 @@ import joblib
 import os
 import numpy as np
 import pandas as pd
+import csv
 from sklearn.linear_model import LogisticRegression
 
 # Data Rubric:
@@ -30,9 +31,14 @@ from sklearn.linear_model import LogisticRegression
 
 # Load the trained model from the .pkl file
 model = joblib.load('Heart_Disease_model.pkl')
+print(os.getcwd())
+cwd = os.getcwd()
+csv_file_location = "../Shared_CSV/currentPatient.csv"
 
-csv_file_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/main/resources/org/example/heart_disease_detector/currentPatient.csv"
-csv_results_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/main/resources/org/example/heart_disease_detector/patientData.csv"
+
+
+# Create a new csv not patientData
+csv_results_location = "../Shared_CSV/patientResults.csv"
 # Get Project CSV
 df = pd.read_csv(csv_file_location, names=["FirstName", "LastName", "Age", "Sex", "Chest pain type", "BP", "Cholesterol", "FBS over 120", "EKG results", "Max HR", "Exercise angina",
                                            "ST depression", "Slope of ST", "Number of vessels fluro", "Thallium"])
@@ -46,8 +52,6 @@ df_without_firstName = df.drop("FirstName", axis=1,)
 fields = df_without_firstName.drop("LastName", axis=1)
 
 #Convert DataTypes:
-
-print(fields.dtypes)
 
 # Sex
 fields.loc[fields["Sex"] == "Male", "Sex"] = 1
@@ -87,13 +91,18 @@ fields["Thallium"] = fields["Thallium"].astype(int)
 # Prediction
 prediction = model.predict(fields)
 
-# Probability
-prob = model.predict_proba(fields)
-
-probability = prob[0][prediction]
+# Probability of prediction
+prob = model.predict_proba(fields)[0][prediction]
 
 #convert probability to percent
+probabilityFormatted = f"{prob[0]*100:.0f}"
 
-print(prediction, " with ", probability)
+# Combine name, results, and probability
+record = firstName[0],lastName[0],prediction[0],probabilityFormatted
+
 
 ## Write first name, last name, prediction, probability, to csv
+with open(csv_results_location, mode='w', newline='') as file:
+    writer = csv.writer(file)
+    # Write the record to the CSV file
+    writer.writerow(record)

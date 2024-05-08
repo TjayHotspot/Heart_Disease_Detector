@@ -16,12 +16,12 @@
          </font>
       </Text>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="SKYBLUE" height="551.0" layoutX="178.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="845.0" />
-      <Button id="Single_Patient_btn" layoutX="477.0" layoutY="312.0" mnemonicParsing="false" onAction="#singlePatient" prefHeight="88.0" prefWidth="244.0" stylesheets="@css/style_sheet.css" text="Single Patient">
+      <Button id="Single_Patient_btn" layoutX="477.0" layoutY="312.0" mnemonicParsing="false" onAction="#singlePatient" prefHeight="88.0" prefWidth="244.0" text="Single Patient">
          <font>
             <Font size="28.0" />
          </font>
       </Button>
-      <Button id="Multiple_Patients_btn" layoutX="477.0" layoutY="455.0" mnemonicParsing="false" onAction="#multiplePatients" prefHeight="88.0" prefWidth="244.0" stylesheets="@css/style_sheet.css" text="Multiple Patients">
+      <Button id="Multiple_Patients_btn" layoutX="477.0" layoutY="455.0" mnemonicParsing="false" onAction="#multiplePatients" prefHeight="88.0" prefWidth="244.0" text="Multiple Patients">
          <font>
             <Font size="28.0" />
          </font>
