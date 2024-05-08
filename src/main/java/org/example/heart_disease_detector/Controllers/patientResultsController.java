@@ -91,7 +91,7 @@ public class patientResultsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             // Command to execute the Python script
-            String[] command = {"python", "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/python/Heart_Disease_model.pkl"};
+            String[] command = {"python", "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/python/useModel.py"};
 
             // Create ProcessBuilder instance with the command
             ProcessBuilder pb = new ProcessBuilder(command);

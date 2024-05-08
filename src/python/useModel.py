@@ -39,8 +39,8 @@ onnx_model_path = onnx_file_path  # Path to your ONNX model
 sess = rt.InferenceSession(onnx_model_path)
 
 
-csv_file_location = "../Shared_CSV/currentPatient.csv"
-csv_results_location = "../Shared_CSV/patientResults.csv"
+csv_file_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/Shared_CSV/currentPatient.csv"
+csv_results_location = "/Users/teejay/Documents/PersonalCode/JavaProjects/Heart_Disease_Detector/Heart_Disease_Detector/src/Shared_CSV/patientResults.csv"
 
 
 # Get Project CSV
