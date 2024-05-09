@@ -8,6 +8,7 @@ import onnxruntime as rt  # Import ONNX runtime
 from skl2onnx.common.data_types import FloatTensorType
 from sklearn.linear_model import LogisticRegression
 
+
 # Data Rubric:
 
 # Age in years
@@ -32,12 +33,9 @@ from sklearn.linear_model import LogisticRegression
 # Get the directory of the current Python script
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# Load the trained model from the .onnx file
-onnx_file_path = os.path.join(script_dir, "Heart_Disease_model.onnx")
-
 
 # Load the ONNX model
-onnx_model_path = onnx_file_path  # Path to your ONNX model
+onnx_model_path = "Heart_Disease_model.onnx"  # Path to your ONNX model
 sess = rt.InferenceSession(onnx_model_path)
 
 

@@ -13,6 +13,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.*;
@@ -34,8 +35,7 @@ public class multiplePatientsController {
     boolean fileUploaded = false;
     int recordCount = 0;
 
-    private String defaultCSV = "src/main/resources/org/example/heart_disease_detector/patientData.csv";
-
+    private String defaultCSV = "src/main/java/org/example/heart_disease_detector/Shared_CSV/patientData.csv";
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -129,7 +129,7 @@ public class multiplePatientsController {
         boolean success = false;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
-            try(BufferedWriter writer = new BufferedWriter(new FileWriter(defaultCSV));) {
+            try(BufferedWriter writer = new BufferedWriter(new FileWriter(FileManager.getInstance().get_patientData()));) {
                 writer.write("");
                 while ((line = br.readLine()) != null) {
                     // Process each line of the CSV file

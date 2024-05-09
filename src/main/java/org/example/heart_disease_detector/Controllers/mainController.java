@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.IOException;
@@ -17,8 +18,6 @@ import java.io.IOException;
 public class mainController {
     @FXML
     Pane update_page;
-
-
 
     @FXML
     protected void singlePatient(ActionEvent event ) throws IOException {

@@ -12,6 +12,7 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 import org.example.heart_disease_detector.Patient;
 
@@ -154,7 +155,7 @@ public class patientListController implements Initializable {
         int currentLine = 0;
         load_patients();
 
-        try (BufferedReader br = new BufferedReader(new FileReader(file_location))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileManager.getInstance().get_patientData()))) {
             while ((line = br.readLine()) != null && box_tracker < 26) {
                 if(currentLine < page_tracker * 26 && currentLine >= ((page_tracker - 1)  * 26) ) {
                     // Split the line by the delimiter
@@ -184,7 +185,7 @@ public class patientListController implements Initializable {
         }
         // Set Page Count
         page_count.setText("Page " + page_tracker + " of " + pageCount);
-        try (BufferedReader br = new BufferedReader(new FileReader(file_location))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileManager.getInstance().get_patientData()))) {
             while ((line = br.readLine()) != null) {
                 // Split the line by the delimiter
                 String[] data = line.split(csvDelimiter);

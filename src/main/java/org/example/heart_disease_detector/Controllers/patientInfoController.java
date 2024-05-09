@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 import org.example.heart_disease_detector.Patient;
 
@@ -120,7 +121,7 @@ public class patientInfoController implements Initializable{
     protected void loadPatientInfo(){
         String line = "";
         String csvDelimiter = ",";
-        try (BufferedReader br = new BufferedReader(new FileReader("src/Shared_CSV/currentPatient.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(FileManager.getInstance().get_currentPatient()))) {
             while ((line = br.readLine()) != null) {
                 // Split the line by the delimiter
                 String[] data = line.split(csvDelimiter);

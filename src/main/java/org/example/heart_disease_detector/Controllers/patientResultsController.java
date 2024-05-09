@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.*;
@@ -88,7 +89,7 @@ public class patientResultsController implements Initializable {
     protected void set_results_table() {
         try {
             // Read the CSV file
-            BufferedReader fileReader = new BufferedReader(new FileReader("src/Shared_CSV/patientResults.csv"));
+            BufferedReader fileReader = new BufferedReader(new FileReader(FileManager.getInstance().get_patientResults()));
 
             // Read the record
             String resultLine = fileReader.readLine();
