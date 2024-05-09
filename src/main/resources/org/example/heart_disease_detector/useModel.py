@@ -30,10 +30,8 @@ from skl2onnx.common.data_types import FloatTensorType
 
 # Get the directory of the current script
 
-#script_dir = os.path.dirname(os.path.realpath(__file__))
-
 # Load the ONNX model
-onnx_model_path = sys.argv[1] #os.path.join(script_dir, "Heart_Disease_model.onnx")
+onnx_model_path = sys.argv[1]
 # Load the ONNX model
 sess = rt.InferenceSession(onnx_model_path)
 

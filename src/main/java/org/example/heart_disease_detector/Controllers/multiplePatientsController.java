@@ -35,7 +35,6 @@ public class multiplePatientsController {
     boolean fileUploaded = false;
     int recordCount = 0;
 
-    //private String defaultCSV = "src/main/java/org/example/heart_disease_detector/Shared_CSV/patientData.csv";
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
