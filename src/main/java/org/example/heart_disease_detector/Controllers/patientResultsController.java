@@ -14,6 +14,8 @@ import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ResourceBundle;
 
 public class patientResultsController implements Initializable {
@@ -95,10 +97,10 @@ public class patientResultsController implements Initializable {
             String resultLine = fileReader.readLine();
 
             // Split the result line into values
-            String[] values = resultLine.split(",");
-
+            String[] values = resultLine.split(", ");
             // Extract the name, prediction, and probability
-            String Name = values[0] + " " + values[1];
+            String Name = values[0].replace("('", "").replace("'", "") + " " +
+                            values[1].replaceAll("'", "");
             patient_results_name.setText(Name);         // Set Name
             if(values[2].equals("1")){
                 patient_results_HD.setText("Present");  // Set If has heart disease
@@ -106,9 +108,8 @@ public class patientResultsController implements Initializable {
             else if(values[2].equals("0")){
                 patient_results_HD.setText("Non Present");// Set If not has heart disease
             }
+            patient_results_probability.setText(values[3].replaceAll("'", "").replace(")", "") + "% ");
 
-            String probability = values[3] + "%";
-            patient_results_probability.setText(probability); // Set Probability
 
             fileReader.close();
         } catch (IOException e) {
@@ -116,15 +117,30 @@ public class patientResultsController implements Initializable {
         }
     }
 
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(!scriptCalled) {
+        if (!scriptCalled) {
             try {
-                // Command to execute the Python script
-                String[] command = {"python", "src/python/useModel.py"};
+                // Read patient info
+                BufferedReader br = new BufferedReader(new FileReader(FileManager.getInstance().get_currentPatient()));
+                String patientInfo = br.readLine();
+                br.close();
+
+                // Load ONNX model from resources
+                InputStream onnxInputStream = HeartDiseaseApplication.class.getResourceAsStream("/org/example/heart_disease_detector/Heart_Disease_model.onnx");
+                File tempOnnxFile = File.createTempFile("Heart_Disease_model", ".onnx");
+                Files.copy(onnxInputStream, tempOnnxFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                String onnxModelPath = tempOnnxFile.getAbsolutePath();
+
+                // Get input stream for the Python script within the JAR
+                InputStream scriptInputStream = HeartDiseaseApplication.class.getResourceAsStream("/org/example/heart_disease_detector/useModel.py");
+
+                // Write script content to a temporary file
+                File tempScriptFile = File.createTempFile("useModel", ".py");
+                Files.copy(scriptInputStream, tempScriptFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                // Construct command to execute the Python script
+                String[] command = {"python", tempScriptFile.getAbsolutePath(), onnxModelPath, patientInfo};
 
                 // Create ProcessBuilder instance with the command
                 ProcessBuilder pb = new ProcessBuilder(command);
@@ -139,10 +155,23 @@ public class patientResultsController implements Initializable {
                     System.err.println("Error: " + errorLine);
                 }
 
+                // Read Output and write output to patientResults
+                BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                String readerLine;
+                File patientResults = FileManager.getInstance().get_patientResults();
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(patientResults));
+                while ((readerLine = reader.readLine()) != null){
+                    System.out.println(readerLine);
+                    bufferedWriter.write(readerLine);
+                }
+                bufferedWriter.close();
+
                 // Wait for the process to finish
                 int exitCode = process.waitFor();
                 System.out.println("Python script exited with code: " + exitCode);
 
+                // Close streams
+                reader.close();
                 scriptCalled = true;
 
             } catch (IOException | InterruptedException e) {

@@ -1,13 +1,9 @@
-import csv
-import joblib
-import os
+import sys
 import numpy as np
 import pandas as pd
-import csv
+import os
 import onnxruntime as rt  # Import ONNX runtime
 from skl2onnx.common.data_types import FloatTensorType
-from sklearn.linear_model import LogisticRegression
-
 
 # Data Rubric:
 
@@ -30,23 +26,30 @@ from sklearn.linear_model import LogisticRegression
 # Thallium      (3 = normal; 6 = fixed defect; 7 = reversible defect)
 # target Presence or Absence
 
-# Get the directory of the current Python script
-script_dir = os.path.dirname(os.path.abspath(__file__))
 
+
+# Get the directory of the current script
+
+#script_dir = os.path.dirname(os.path.realpath(__file__))
 
 # Load the ONNX model
-onnx_model_path = "Heart_Disease_model.onnx"  # Path to your ONNX model
+onnx_model_path = sys.argv[1] #os.path.join(script_dir, "Heart_Disease_model.onnx")
+# Load the ONNX model
 sess = rt.InferenceSession(onnx_model_path)
 
 
 # Specify relative paths to the CSV files
-csv_file_location = os.path.join(script_dir, "..", "Shared_CSV", "currentPatient.csv")
-csv_results_location = os.path.join(script_dir, "..", "Shared_CSV", "patientResults.csv")
+patient = sys.argv[2]
 
+patient_info = patient.split(',')
 
-# Get Project CSV
-df = pd.read_csv(csv_file_location, names=["FirstName", "LastName", "Age", "Sex", "Chest pain type", "BP", "Cholesterol", "FBS over 120", "EKG results", "Max HR", "Exercise angina",
-                                           "ST depression", "Slope of ST", "Number of vessels fluro", "Thallium"])
+# Column names
+colNames = np.array(["FirstName", "LastName", "Age", "Sex", "Chest pain type", "BP", "Cholesterol",
+                     "FBS over 120", "EKG results", "Max HR", "Exercise angina", "ST depression",
+                     "Slope of ST", "Number of vessels fluro", "Thallium"])
+
+# Create DataFrame with patient Info
+df = pd.DataFrame(data=[patient_info], columns=colNames)
 
 # Save Names
 firstName = df.FirstName
@@ -110,8 +113,4 @@ probability = predictions_proba[1][0][predictions]
 # Combine name, results, and probability
 record = df.iloc[0]['FirstName'], df.iloc[0]['LastName'], predictions, f"{probability * 100:.0f}"
 
-# Write first name, last name, prediction, probability, to csv
-with open(csv_results_location, mode='w', newline='') as file:
-    writer = csv.writer(file)
-    # Write the record to the CSV file
-    writer.writerow(record)
+print(record)

@@ -58,6 +58,7 @@ public class multiplePatientsController {
     protected void rubric_btn(ActionEvent event) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("evaluationRubric.fxml"));
+            System.out.print(HeartDiseaseApplication.class.getResource("evaluationRubric.fxml").getPath());
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             evaluationRubricController.backParent = "multiplePatients";

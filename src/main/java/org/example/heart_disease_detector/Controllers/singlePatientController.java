@@ -60,7 +60,6 @@ public class singlePatientController {
     @FXML
     private Text prompt_empty;
 
-    public static String defaultCSV = "src/Shared_CSV/currentPatient.csv";
 
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {

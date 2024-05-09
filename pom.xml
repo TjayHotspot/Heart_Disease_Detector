@@ -70,7 +70,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                org.example.heart_disease_detector/org.example.heart_disease_detector.HelloApplication
+                                org.example.heart_disease_detector/org.example.heart_disease_detector.runMain
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
@@ -83,5 +83,10 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 </project>
