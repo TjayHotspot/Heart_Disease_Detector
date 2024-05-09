@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.IOException;
@@ -223,9 +224,9 @@ public class singlePatientController {
     @FXML
     protected void data_to_csv(List<String> stringDataList) throws IOException {
         // Path to CSV file
-        String csvFilePath = defaultCSV;
+
         // Clear the CSV file by truncating it
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(csvFilePath, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FileManager.getInstance().get_currentPatient(), false))) {
             // Truncate the file by opening it in write mode (false) and not appending data
             writer.write(""); // Write an empty string to clear the file
             writer.write(stringDataList.get(0));    //Field 1 (String)[0]

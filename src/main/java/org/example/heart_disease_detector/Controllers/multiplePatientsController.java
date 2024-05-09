@@ -35,7 +35,7 @@ public class multiplePatientsController {
     boolean fileUploaded = false;
     int recordCount = 0;
 
-    private String defaultCSV = "src/main/java/org/example/heart_disease_detector/Shared_CSV/patientData.csv";
+    //private String defaultCSV = "src/main/java/org/example/heart_disease_detector/Shared_CSV/patientData.csv";
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -74,7 +74,6 @@ public class multiplePatientsController {
     protected void patientList_btn(ActionEvent event) throws IOException {
         if (fileUploaded) {
             try {
-                patientListController.file_location = defaultCSV;
                 patientListController.record_count = recordCount;
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientList.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());

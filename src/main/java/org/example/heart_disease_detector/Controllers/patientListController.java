@@ -62,7 +62,6 @@ public class patientListController implements Initializable {
     @FXML ToggleButton box26;
 
     // global data set by calling classes
-    public static String file_location;
     public static int record_count;
 
     // Keep track of pages
@@ -313,7 +312,7 @@ public class patientListController implements Initializable {
     @FXML
     public void setCurrentPatient(){
         if(currently_selected != null){
-            try (BufferedWriter writer = new BufferedWriter(new FileWriter("src/Shared_CSV/currentPatient.csv"))) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(FileManager.getInstance().get_currentPatient()))) {
                 // Append data to the CSV file
                 writer.write("");
                 Patient patient = patientMap.get(currently_selected.getText());
