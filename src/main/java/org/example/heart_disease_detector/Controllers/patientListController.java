@@ -6,7 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
@@ -15,25 +14,24 @@ import javafx.stage.Stage;
 import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 import org.example.heart_disease_detector.Patient;
-
 import java.io.*;
 import java.net.URL;
 import java.util.*;
 
 public class patientListController implements Initializable {
-    // Scene Variables
+// Scene Variables
     @FXML
-    Pane overlay_pane;
+    Pane overlay_pane;          // Help overlay
     @FXML
-    Text page_count;
+    Text page_count;            // Page count text
     @FXML
-    TextField search_field;
+    TextField search_field;     // Search bar text field
     @FXML
-    Text patient_not_found;
+    Text patient_not_found;     // Error message (Default = not visible)
     @FXML
-    Text patient_prompt_text;
+    Text patient_prompt_text;   // Error message (Default = not visible)
 
-    // Text Boxes
+    // Grid Boxes that display individual patients
     @FXML ToggleButton box1;
     @FXML ToggleButton box2;
     @FXML ToggleButton box3;
@@ -61,23 +59,21 @@ public class patientListController implements Initializable {
     @FXML ToggleButton box25;
     @FXML ToggleButton box26;
 
-    // global data set by calling classes
-    public static int record_count;
+    // global variable set by calling classes
+    public static int record_count;             // (Count the # of records in 'patientData.csv')
 
-    // Keep track of pages
+    // Local variables to keep track of pages
     private int page_tracker = 1;
     private int box_tracker = 0;
     private int pageCount = 1;
 
+    // Holds the currently selected patient box
     private ToggleButton  currently_selected;
-
-
-
 
     // HashMap to store patient information
     private HashMap<String, Patient> patientMap = new HashMap<>();
 
-
+    // Go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -86,26 +82,28 @@ public class patientListController implements Initializable {
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // View the selected patients info
     @FXML
     protected void patient_data_btn(ActionEvent event) throws IOException {
+        // Check if a patient toggleButton is selected
         if(currently_selected != null) {
-            setCurrentPatient();
+            setCurrentPatient();            // Sets local patient info to shared csv file for use in different scene
             patient_prompt_text.setVisible(false);
+            // Go to patientInfo scene
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientInfo.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                // Set patientInfoBackParent to current scene
                 patientInfoController.patientInfoBackParent = "patientList";
                 stage.setScene(scene);
                 stage.show();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -115,18 +113,20 @@ public class patientListController implements Initializable {
         }
     }
 
+    // View Patient Results (Has heart disease or not)
     @FXML
     protected void patient_results_btn(ActionEvent event) throws IOException {
+        // Check if patient toggle button is selected
         if(currently_selected != null) {
-            setCurrentPatient();
+            setCurrentPatient();        // Sets local patient info to shared csv file for use in different scene
             patient_prompt_text.setVisible(false);
+            // Go to patient results scene
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -136,6 +136,7 @@ public class patientListController implements Initializable {
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -144,18 +145,21 @@ public class patientListController implements Initializable {
         else{
             overlay_pane.setVisible(true);
         }
-
     }
 
+    // Fill textboxes with patient names from "patientData.csv"
     @FXML
     protected void displayNames(){
         String line = "";
         String csvDelimiter = ",";
-        int currentLine = 0;
-        load_patients();
+        int currentLine = 0;    // Keep track of current line in line-reader
+        load_patients();        // Load all patient info into hashmap
 
+        // Read patient data and collect just the name
         try (BufferedReader br = new BufferedReader(new FileReader(FileManager.getInstance().get_patientData()))) {
+            // While boxes available
             while ((line = br.readLine()) != null && box_tracker < 26) {
+                // Load current names depending on page number
                 if(currentLine < page_tracker * 26 && currentLine >= ((page_tracker - 1)  * 26) ) {
                     // Split the line by the delimiter
                     String[] data = line.split(csvDelimiter);
@@ -165,13 +169,13 @@ public class patientListController implements Initializable {
                 // Process each column of the CSV data
                 System.out.println(); // Move to the next line
                 currentLine++;
-
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Load patient data into hashmap key = patient name, data = patient data
     @FXML
     protected void load_patients(){
         String line = "";
@@ -202,6 +206,7 @@ public class patientListController implements Initializable {
         }
     }
 
+    // Add name to toggle button
     @FXML
     protected void addName(String fullName){
         List<ToggleButton> boxes = Arrays.asList(box1, box2, box3, box4, box5, box6, box7, box8, box9, box10
@@ -212,6 +217,7 @@ public class patientListController implements Initializable {
         box_tracker++;
     }
 
+    // Clear all toggle buttons
     @FXML
     protected void clearTable(){
         System.out.println(box_tracker);
@@ -225,8 +231,9 @@ public class patientListController implements Initializable {
         }
     }
 
+    // Toggle toggle Button
     @FXML
-    protected void patientClicked(ActionEvent event) throws IOException {
+    protected void patientClicked(ActionEvent event){
         List<ToggleButton> boxes = Arrays.asList(box1, box2, box3, box4, box5, box6, box7, box8, box9, box10
                 , box11, box12, box13, box14, box15, box16, box17, box18, box19, box20, box21, box22, box23, box24, box25, box26);
 
@@ -247,6 +254,7 @@ public class patientListController implements Initializable {
         }
     }
 
+    // Go to next page of patient names
     @FXML
     protected void nextPage(){
         if(page_tracker < pageCount){
@@ -261,6 +269,7 @@ public class patientListController implements Initializable {
         }
     }
 
+    // Go to previous page of patient names
     @FXML
     protected void prevPage(){
         if(page_tracker > 1){
@@ -288,6 +297,7 @@ public class patientListController implements Initializable {
         currently_selected = null;
     }
 
+    // Search for name in patients list
     @FXML
     protected void searchBar(){
         if (patientMap.containsKey(search_field.getText())){
@@ -299,8 +309,9 @@ public class patientListController implements Initializable {
             deselectToggleButtons();
             patient_not_found.setVisible(true);
         }
-
     }
+
+    // Clear search bar
     @FXML
     protected void clear_search(){
         patient_not_found.setVisible(false);
@@ -309,6 +320,7 @@ public class patientListController implements Initializable {
         displayNames();
     }
 
+    // Set local variable (CurrentPatient)
     @FXML
     public void setCurrentPatient(){
         if(currently_selected != null){
@@ -324,10 +336,9 @@ public class patientListController implements Initializable {
         }
     }
 
-
+    // Run on the start of this scene call
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         displayNames();
     }
-
 }

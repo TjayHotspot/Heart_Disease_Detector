@@ -20,17 +20,18 @@ import java.util.ResourceBundle;
 
 public class patientResultsController implements Initializable {
     @FXML
-    Pane overlay_pane;
+    Pane overlay_pane;                                      // Help scene overlay
 
     @FXML
-    TextField patient_results_name;
+    TextField patient_results_name;                         // Patient Name scene text field
     @FXML
-    TextField patient_results_HD;
+    TextField patient_results_HD;                           // Patient results scene text field (Has heart disease or not)
     @FXML
-    TextField patient_results_probability;
+    TextField patient_results_probability;                  // Patient results probability scene text field (In percentage)
 
-    private static boolean scriptCalled = false;
+    private static boolean scriptCalled = false;            // Local variable to track when the python script is called
 
+    // Go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -45,6 +46,8 @@ public class patientResultsController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    // View current Patient Info
     @FXML
     protected void patient_info_btn(ActionEvent event) throws IOException {
         try {
@@ -54,13 +57,13 @@ public class patientResultsController implements Initializable {
             patientInfoController.patientInfoBackParent = "patientResults";
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // View current patient info analysis
     @FXML
     protected void analyze_info_btn(ActionEvent event) throws IOException {
         try {
@@ -69,13 +72,13 @@ public class patientResultsController implements Initializable {
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -84,9 +87,9 @@ public class patientResultsController implements Initializable {
         else{
             overlay_pane.setVisible(true);
         }
-
     }
 
+    // Set the results from python script to scene text field
     @FXML
     protected void set_results_table() {
         try {
@@ -110,15 +113,16 @@ public class patientResultsController implements Initializable {
             }
             patient_results_probability.setText(values[3].replaceAll("'", "").replace(")", "") + "% ");
 
-
             fileReader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    //  Run on the start of this scene call
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // If python script not called
         if (!scriptCalled) {
             try {
                 // Read patient info
@@ -178,6 +182,6 @@ public class patientResultsController implements Initializable {
                 e.printStackTrace();
             }
         }
-        set_results_table();
+        set_results_table();    // Set results table once complete with python script
     }
 }

@@ -20,12 +20,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class patientInfoController implements Initializable{
-    public static String patientInfoBackParent;
-    // patientResults
-    // patientList
+
 
     @FXML
-    Pane overlay_pane;
+    Pane overlay_pane;                          // Help screen overlay
+
+// Patient Info text fields
     @FXML TextField first_name;
     @FXML TextField last_name;
     @FXML TextField age;
@@ -43,7 +43,11 @@ public class patientInfoController implements Initializable{
     @FXML TextField thallium;
 
 
+    public static String patientInfoBackParent;
+    // patientResults
+    // patientList
 
+    // Go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -52,29 +56,30 @@ public class patientInfoController implements Initializable{
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Go to evaluationRubric scene
     @FXML
     protected void rubric_btn(ActionEvent event) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("evaluationRubric.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            // Set evaluationRubric 'backParent' to current scene "PatientInfo"
             evaluationRubricController.backParent = "patientInfo";
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Go back to previous scene
     @FXML
     protected void back_btn(ActionEvent event) throws IOException {
         // patientResults
@@ -86,7 +91,6 @@ public class patientInfoController implements Initializable{
                 Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -98,7 +102,6 @@ public class patientInfoController implements Initializable{
                 Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -106,6 +109,7 @@ public class patientInfoController implements Initializable{
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -117,6 +121,7 @@ public class patientInfoController implements Initializable{
 
     }
 
+    // Load patient info into scene text fields
     @FXML
     protected void loadPatientInfo(){
         String line = "";
@@ -149,6 +154,7 @@ public class patientInfoController implements Initializable{
         }
     }
 
+    // Run on the start of this scene call
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
        loadPatientInfo();
