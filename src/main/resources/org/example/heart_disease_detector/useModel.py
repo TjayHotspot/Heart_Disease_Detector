@@ -30,7 +30,7 @@ from skl2onnx.common.data_types import FloatTensorType
 
 # Get the directory of the current script
 
-# Load the ONNX model
+# Get onnx model path from argument
 onnx_model_path = sys.argv[1]
 # Load the ONNX model
 sess = rt.InferenceSession(onnx_model_path)
