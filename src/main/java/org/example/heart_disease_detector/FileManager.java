@@ -16,6 +16,7 @@ public class FileManager {
         patientResults = new File("patientResults.csv");
     }
 
+    // Return instance of FileManager
     public static FileManager getInstance() {
         if (instance == null) {
             instance = new FileManager();
@@ -23,6 +24,7 @@ public class FileManager {
         return instance;
     }
 
+// Accessors
     public File get_patientData() {
         return patientData;
     }

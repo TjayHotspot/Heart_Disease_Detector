@@ -12,7 +12,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,9 +19,9 @@ import java.util.List;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
+
 public class singlePatientController {
-
-
+// Scene variables
     @FXML
     Pane overlay_pane;
     @FXML
@@ -60,7 +59,7 @@ public class singlePatientController {
     @FXML
     private Text prompt_empty;
 
-
+    // go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -69,29 +68,30 @@ public class singlePatientController {
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Go to evaluationRubric scene
     @FXML
     protected void rubric_btn(ActionEvent event) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("evaluationRubric.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            // Set backParent to current scene "singlePatient"
             evaluationRubricController.backParent = "singlePatient";
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // View patient results once forum is complete
     @FXML
     protected void view_results_btn(ActionEvent event) throws IOException {
         if(forum_incomplete()){
@@ -102,19 +102,17 @@ public class singlePatientController {
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientResults.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                // Read CSV file add name
-                // Predict patient has heart disease
-                // Write Probability
                 stage.setScene(scene);
+                // Set backParent to current scene "singlePatient"
                 evaluationRubricController.backParent = "singlePatient";
                 stage.show();
-
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -126,6 +124,7 @@ public class singlePatientController {
 
     }
 
+    // Check if forum is incomplete and if true, display empty or incorrect box(s)
     @FXML
     protected boolean forum_incomplete() throws IOException {
         boolean is_incomplete = false;
@@ -145,7 +144,6 @@ public class singlePatientController {
                         Integer.parseInt(textField.getText());
                         textStringsList.add(textField.getText());
                         textField.setStyle("-fx-border-color: default;");
-
                     } catch (NumberFormatException e) {
                         // If any text cannot be converted to an integer, handle the exception
                         System.err.println(textField + " is not a number");
@@ -159,7 +157,6 @@ public class singlePatientController {
                         Double.parseDouble(textField.getText());
                         textStringsList.add(textField.getText());
                         textField.setStyle("-fx-border-color: default;");
-
                     } catch (NumberFormatException e) {
                         // If any text cannot be converted to an integer, handle the exception
                         System.err.println(textField + " is not a double");
@@ -171,7 +168,6 @@ public class singlePatientController {
                         any_non_numbers = true;
                         prompt_numerical.setVisible(true);
                     }
-                    
                 }
                 else{
                     textField.setStyle("-fx-border-color: default;"); // Set UI Border to default
@@ -220,9 +216,9 @@ public class singlePatientController {
         return is_incomplete;
     }
 
+    // Send forum data into csv file
     @FXML
     protected void data_to_csv(List<String> stringDataList) throws IOException {
-        // Path to CSV file
 
         // Clear the CSV file by truncating it
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FileManager.getInstance().get_currentPatient(), false))) {

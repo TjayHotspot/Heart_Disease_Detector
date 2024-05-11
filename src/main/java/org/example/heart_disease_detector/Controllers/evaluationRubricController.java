@@ -13,13 +13,18 @@ import java.io.EOFException;
 import java.io.IOException;
 
 public class evaluationRubricController {
+
+    // Keeps track of what class called this scene
     public static String backParent;
     // "singlePatient"
     // "multiplePatients"
     // "patientInfo"
     // "patientAnalysis"
+
     @FXML
-    Pane overlay_pane;
+    Pane overlay_pane;  // Help screen overlay
+
+    // Go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -35,6 +40,7 @@ public class evaluationRubricController {
         }
     }
 
+    // Go to page 1 scene from page 2
     @FXML
     protected void page_1_btn(ActionEvent event) throws IOException {
         try {
@@ -50,6 +56,7 @@ public class evaluationRubricController {
         }
     }
 
+    // Go to page 2 scene from page 1
     @FXML
     protected void page_2_btn(ActionEvent event) throws IOException {
         try {
@@ -65,6 +72,7 @@ public class evaluationRubricController {
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -75,6 +83,7 @@ public class evaluationRubricController {
         }
     }
 
+    // Go back to previous scene
     @FXML
     protected void back_btn(ActionEvent event) throws IOException {
         // "singlePatient"
