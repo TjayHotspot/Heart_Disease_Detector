@@ -1,6 +1,8 @@
 package org.example.heart_disease_detector;
 
+// Patient Object
 public class Patient {
+// Local patient info variables
     private String firstName;
     private String lastName;
     private String age;
@@ -17,6 +19,7 @@ public class Patient {
     private String fluro;
     private String thallium;
 
+    // Patient class constructor
     public Patient(String firstName, String lastName, String age, String sex, String chestPain, String BP,
                         String Chol, String FBS_over_120, String EKG, String max_HR, String excercise_angina, String ST_depression,
                         String slopST, String fluro, String thallium) {
@@ -38,6 +41,7 @@ public class Patient {
         this.thallium = thallium;
     }
 
+// Patient Accessors
     public String getFirstName() {
         return firstName;
     }
