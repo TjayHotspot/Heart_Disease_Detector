@@ -17,33 +17,37 @@ import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
 
 import java.io.*;
-import java.nio.Buffer;
 
 public class multiplePatientsController {
     @FXML
-    Pane overlay_pane;
+    Pane overlay_pane;                  // Help screen overlay
     @FXML
-    Label file_status;
+    Label file_status;                  // Displays to user if file is uploaded or not
     @FXML
-    Button uploadCSV_btn;
+    Button uploadCSV_btn;               // Button to add csv file
     @FXML
-    Rectangle prompt_upload_box;
+    Rectangle prompt_upload_box;        // Error box to prompt user to add file
     @FXML
-    Text prompt_upload;
-    @FXML Text csv_fail;
+    Text prompt_upload;                 // Error text to prompt user to add file
+    @FXML
+    Text csv_fail;                      // Error text for invalid csv file
 
-    boolean fileUploaded = false;
-    int recordCount = 0;
+    boolean fileUploaded = false;       // fileUploaded tracks if user uploaded file (default = false)
+    int recordCount = 0;                // keeps track of rows in users csv file
 
+    // Go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("main.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+            // Reset variables to default
             fileUploaded = false;
             recordCount = 0;
             file_status.setText("No File Added");
+
             stage.setScene(scene);
             stage.show();
 
@@ -53,6 +57,7 @@ public class multiplePatientsController {
         }
     }
 
+    // Go to evaluationRubric scene
     @FXML
     protected void rubric_btn(ActionEvent event) throws IOException {
         try {
@@ -70,17 +75,18 @@ public class multiplePatientsController {
         }
     }
 
+    // View patients in a list from the imported csv data
     @FXML
     protected void patientList_btn(ActionEvent event) throws IOException {
         if (fileUploaded) {
             try {
+                // Set the 'patientListController' recordCount variable
                 patientListController.record_count = recordCount;
                 FXMLLoader fxmlLoader = new FXMLLoader(HeartDiseaseApplication.class.getResource("patientList.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
-
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -89,11 +95,13 @@ public class multiplePatientsController {
             }
         }
         else{
+            // Prompt for csv file upload to continue
             prompt_upload.setVisible(true);
             prompt_upload_box.setVisible(true);
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -108,6 +116,7 @@ public class multiplePatientsController {
     // Method to handle the file upload action
     public void uploadFile_btn() {
         csv_fail.setVisible(false);
+        // Create file chooser to allow user to select csv file from directory
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open CSV File");
         fileChooser.getExtensionFilters().addAll(
@@ -126,6 +135,8 @@ public class multiplePatientsController {
     // Method to process the selected CSV file
     private void processCSVFile(File file) {
         boolean success = false;
+
+        // Read user uploaded csv and write it to local file 'patientData'
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             try(BufferedWriter writer = new BufferedWriter(new FileWriter(FileManager.getInstance().get_patientData()));) {
@@ -142,10 +153,10 @@ public class multiplePatientsController {
             }
 
             success = true;
-            // You can store the content of the CSV file in your project's CSV file here
         } catch (IOException e) {
             e.printStackTrace();
         }
+        // Display file status and set local variable
         if(success){
             fileUploaded = true;
             file_status.setText("File Added");

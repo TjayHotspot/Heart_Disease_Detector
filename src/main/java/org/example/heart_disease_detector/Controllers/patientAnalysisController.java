@@ -11,7 +11,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.example.heart_disease_detector.FileManager;
 import org.example.heart_disease_detector.HeartDiseaseApplication;
-import org.example.heart_disease_detector.Patient;
 
 import java.io.*;
 import java.net.URL;
@@ -19,25 +18,26 @@ import java.util.ResourceBundle;
 
 public class patientAnalysisController implements Initializable{
     @FXML
-    Pane overlay_pane;
-    // local vairables
-    private String first_name;
-    private String last_name;
-    private String age;
-    private String sex;
-    private String chest_pain;
-    private String BP;
-    private String Chol;
-    private String FBS_over_120;
-    private String EKG;
-    private String max_HR;
-    private String exercise_angina;
-    private String ST_depression;
-    private String ST_slope;
-    private String Fluro;
-    private String thallium;
+    Pane overlay_pane;                          // Toggle help overlay visible/not visible
 
-    // Information text field
+// local variables
+    private String first_name;                  // Patient First Name
+    private String last_name;                   // Patient Last Name
+    private String age;                         // Patient Age
+    private String sex;                         // Patient Gender
+    private String chest_pain;                  // Patient Chest Pain Type
+    private String BP;                          // Patient Blood Pressure
+    private String Chol;                        // Patient Cholesterol
+    private String FBS_over_120;                // Patient Fasting Blood Sugar of 120 (Bool)
+    private String EKG;                         // Patient EKG
+    private String max_HR;                      // Patient Max Heart Rate
+    private String exercise_angina;             // Patient Exercise angina
+    private String ST_depression;               // Patient ST Depression
+    private String ST_slope;                    // Patient ST Slope
+    private String Fluro;                       // Patient Fluro
+    private String thallium;                    // Patient Thallium
+
+// Patient Info Variable    (scene)
     @FXML TextField first_name_text;
     @FXML TextField last_name_text;
     @FXML TextField age_text;
@@ -54,7 +54,7 @@ public class patientAnalysisController implements Initializable{
     @FXML TextField Fluro_text;
     @FXML TextField thallium_text;
 
-    // Analysis Field
+// Patient Analysis Variable (scene)
     @FXML TextField chest_pain_A;
     @FXML TextField BP_A;
     @FXML TextField Chol_A;
@@ -67,7 +67,7 @@ public class patientAnalysisController implements Initializable{
     @FXML TextField Fluro_A;
     @FXML TextField thallium_A;
 
-
+    // Go to main scene
     @FXML
     protected void home_btn(ActionEvent event) throws IOException {
         try {
@@ -76,13 +76,13 @@ public class patientAnalysisController implements Initializable{
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Go to evaluationRubric scene
     @FXML
     protected void rubric_btn(ActionEvent event) throws IOException {
         try {
@@ -99,6 +99,7 @@ public class patientAnalysisController implements Initializable{
         }
     }
 
+    // Go to previous scene
     @FXML
     protected void back_btn(ActionEvent event) throws IOException {
         try {
@@ -107,13 +108,13 @@ public class patientAnalysisController implements Initializable{
             Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
             stage.setScene(scene);
             stage.show();
-
         }
         catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    // Toggle help overlay visible/not visible
     @FXML
     protected void help_btn(){
         if(overlay_pane.isVisible()){
@@ -122,10 +123,9 @@ public class patientAnalysisController implements Initializable{
         else{
             overlay_pane.setVisible(true);
         }
-
     }
 
-    // Set Local variables
+    // Load current patient info and set to local variables
     @FXML
     protected void loadPatientInfo(){
         String line = "";
@@ -151,7 +151,6 @@ public class patientAnalysisController implements Initializable{
                 thallium = data[14];
                 // Process each column of the CSV data
                 System.out.println(); // Move to the next line
-
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -179,7 +178,7 @@ public class patientAnalysisController implements Initializable{
         analyzePatientInfo();
     }
 
-    // Analyze and set analysis field
+    // Analyze and set analysis fields
     @FXML
     protected void analyzePatientInfo(){
         // Check chest_pain
@@ -345,10 +344,8 @@ public class patientAnalysisController implements Initializable{
                 thallium_A.setText("Unhealthy");
                 break;
         }
-
-
-
     }
+    // Run on the start of this scene call
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadPatientInfo();
